@@ -20,3 +20,10 @@ An unofficial community-driven site for Fatsharks Warhammer 40,000: Darktide.
 Run `npm run dev` to run the server locally. It will be on port 3000 by default.
 
 Darktide cannot request URLs with ports so in order to auth your local server you'll need to expose it to the internet using a tool like localtunnel, ngrok, or tunnelmole. If you set the `DTAUTHDATA_PATH` path in the `.env` file the server will automatically set up a localtunnel tunnel and replace the line in the DTAuth mod to point it to that domain.
+
+localtunnel
+Install:
+`npm install -g localtunnel`
+
+Expose port 3000
+`lt --port 3000`
