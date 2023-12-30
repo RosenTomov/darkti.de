@@ -7,10 +7,14 @@ import {
 
 const buyGear = async () => {
 	try {
-		console.log(`Starting iteration at ${new Date().toLocaleString()}`)
-
 		const auth = await getAuthTokenBySteamId(process.env.DEFAULT_STEAM_ID!)
 		const accountSummary = await getAccountSummary(auth)
+
+		if (!accountSummary) {
+			console.log("Authentication failed")
+			return
+		}
+
 		const characters = accountSummary?.summary.characters
 
 		if (characters?.length) {
@@ -48,7 +52,7 @@ const buyGear = async () => {
 			console.log("No characters found.")
 		}
 	} catch (error) {
-		console.log("Failed to buy gear")
+		console.log("Failed to buy gear", error)
 	}
 }
 

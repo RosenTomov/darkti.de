@@ -61,14 +61,18 @@ export async function getAuthTokenBySteamId(steamId: string) {
 	let user = await prisma.user.findUnique({
 		where: { steamId },
 	})
+
 	if (!user) {
 		throw json({ error: "User not found" })
 	}
+
 	let auth = await prisma.authToken.findUnique({
 		where: { userId: user.id },
 	})
+
 	if (!auth) {
 		throw json({ error: "Auth token not found" })
 	}
+
 	return auth
 }

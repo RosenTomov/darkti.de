@@ -355,10 +355,13 @@ export async function getAccountSummary(auth: AuthToken) {
 	if (response.ok) {
 		let data = await response.json()
 		let result = AccountSummarySchema.safeParse(data)
+
 		if (result.success) {
 			return result.data
 		}
 	}
+
+	return null
 }
 
 // Account
@@ -530,8 +533,7 @@ export async function getCharacterStore(
 		let data = await response.json()
 		let result = CharacterStoreSchema.safeParse(data)
 		if (result.success) {
-			let shop = result.data
-			return shop
+			return result.data
 		} else {
 			console.log(result.error)
 		}

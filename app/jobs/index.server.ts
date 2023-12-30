@@ -18,6 +18,6 @@ let missionFetcher = Cron("*/5 * * * *", async () => {
 
 let buyGearJob = Cron("*/5 * * * *", async () => {
 	await buyGear()
-	console.log("Next mission refresh at", buyGearJob.nextRun())
+	console.log("Next gear check at", buyGearJob.nextRun())
 	return true
 })
